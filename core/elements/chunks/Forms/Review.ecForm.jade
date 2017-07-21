@@ -1,0 +1,25 @@
+#send-review
+    h2 Оставить отзыв
+    form.form-review.form-horizontal(method="post" role="form" id="ec-form-[[+fid]]" data-fid="[[+fid]]" action="")
+        input(type="hidden", name="thread", value="[[+thread]]")
+        <div class="form-group ec-antispam" style="display:none">
+        <label for="ec-[[+antispam_field]]-[[+fid]]" class="control-label">[[%ec_fe_message_antismap]]</label>
+        <input type="text" name="[[+antispam_field]]" class="form-control" id="ec-[[+antispam_field]]-[[+fid]]" value="" />
+        </div>
+        .form-group
+            label.col-sm-2.hidden-xs(for="ec-user_name-[[+fid]]") Имя и фамилия
+            .col-sm-10.col-xs-12
+                input.form-control(id="ec-user_name-[[+fid]]" value="[[+user_name]]" type='text', name="user_name", placeholder='Ваше имя и фамилия...', required='')
+        .form-group
+            label.col-sm-2.hidden-xs(for="ec-subject-[[+fid]]") Курс
+            .col-sm-10.col-xs-12
+                input.form-control(type='text', name="subject", id="ec-subject-[[+fid]]", value="[[+subject]]" placeholder='Проходили курс...', required='')
+        .form-group.form-group-textarea
+            label.col-sm-2.hidden-xs(for="ec-text-[[+fid]]") Отзыв
+            .col-sm-10.col-xs-12
+                textarea.form-control(id="ec-text-[[+fid]]", name="text", rows='5', placeholder='Оставьте отзыв...', required='') [[+text]]
+        .form-group
+            .col-sm-offset-2.col-sm-8.col-xs-12
+                input(type="submit", name="send", value="[[%ec_fe_send]]")
+<div id="ec-form-success-[[+fid]]"></div>
+

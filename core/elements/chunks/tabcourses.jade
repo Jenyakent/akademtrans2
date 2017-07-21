@@ -1,0 +1,134 @@
+li.active
+    h4.hidden-xs {$longtitle}
+        span [[+total]]
+    h4.visible-xs {$longtitle}
+        span [[+total]]
+    .courses-list
+        .courses-item(sort=1)
+            .course-form
+                a(href="/{$uri}")
+                    h4
+                        span {$pagetitle}
+                p Ближайший курс в Минске {$_pls['tv.nearDate']}
+                a(href!="/{$_modx->makeUrl(5)}")
+                    span Расписание в других городах
+                | {$_modx->runSnippet('!AjaxForm',[
+                |                 'snippet' => 'FormIt',
+                |                 'form' => '@FILE chunks/main/cursForm.html',
+                |                 'hooks' => 'email',
+                |                 'emailTo' => $_modx->config.MainEmail,
+                |                 'emailCC' => $_modx->config.MainEmail,
+                |                 'emailFrom' => 'admin@s9831.h6.modhost.pro',
+                |                 'emailSubject' => 'Заявка на запись на курс',
+                |                 'emailTpl' => 'SentCursTpl',
+                |                 'validate' => 'phone:required',
+                |                 'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+            .course-price
+                h3 {$_pls['tv.MinPrice']}
+                ul
+                    li {$_pls['tv.Course_times']}
+                    li {$_pls['tv.Course_count']}
+                    li {$_pls['tv.Course_hours']}
+
+        .courses-item(sort=2)
+            .course-form
+                a(href="/{$uri}")
+                    h4
+                        span {$pagetitle}
+                p Ближайший курс в Минске {$_pls['tv.nearDate']}
+                a(href!="/{$_modx->makeUrl(5)}")
+                    span Расписание в других городах
+                | {$_modx->runSnippet('!AjaxForm',[
+                |                 'snippet' => 'FormIt',
+                |                 'form' => '@FILE chunks/main/cursForm.html',
+                |                 'hooks' => 'email',
+                |                 'emailTo' => $_modx->config.MainEmail,
+                |                 'emailCC' => $_modx->config.MainEmail,
+                |                 'emailFrom' => 'admin@s9831.h6.modhost.pro',
+                |                 'emailSubject' => 'Заявка на запись на курс',
+                |                 'emailTpl' => 'SentCursTpl',
+                |                 'validate' => 'phone:required',
+                |                 'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+            .course-price
+                h3 {$_pls['tv.MinPrice']}
+                ul
+                    li {$_pls['tv.Course_times']}
+                    li {$_pls['tv.Course_count']}
+                    li {$_pls['tv.Course_hours']}
+        .courses-item(sort=3)
+            .course-form
+                a(href="/{$uri}")
+                    h4
+                        span {$pagetitle}
+                p Ближайший курс в Минске {$_pls['tv.nearDate']}
+                a(href!="/{$_modx->makeUrl(5)}")
+                    span Расписание в других городах
+                | {$_modx->runSnippet('!AjaxForm',[
+                |                 'snippet' => 'FormIt',
+                |                 'form' => '@FILE chunks/main/cursForm.html',
+                |                 'hooks' => 'email',
+                |                 'emailTo' => $_modx->config.MainEmail,
+                |                 'emailCC' => $_modx->config.MainEmail,
+                |                 'emailFrom' => 'admin@s9831.h6.modhost.pro',
+                |                 'emailSubject' => 'Заявка на запись на курс',
+                |                 'emailTpl' => 'SentCursTpl',
+                |                 'validate' => 'phone:required',
+                |                 'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+            .course-price
+                h3 {$_pls['tv.MinPrice']}
+                ul
+                    li {$_pls['tv.Course_times']}
+                    li {$_pls['tv.Course_count']}
+                    li {$_pls['tv.Course_hours']}
+        .courses-item(sort=4)
+            .course-form
+                a(href="/{$uri}")
+                    h4
+                        span {$pagetitle}
+                p Ближайший курс в Минске {$_pls['tv.nearDate']}
+                a(href!="/{$_modx->makeUrl(5)}")
+                    span Расписание в других городах
+                | {$_modx->runSnippet('!AjaxForm',[
+                |                 'snippet' => 'FormIt',
+                |                 'form' => '@FILE chunks/main/cursForm.html',
+                |                 'hooks' => 'email',
+                |                 'emailTo' => $_modx->config.MainEmail,
+                |                 'emailCC' => $_modx->config.MainEmail,
+                |                 'emailFrom' => 'admin@s9831.h6.modhost.pro',
+                |                 'emailSubject' => 'Заявка на запись на курс',
+                |                 'emailTpl' => 'SentCursTpl',
+                |                 'validate' => 'phone:required',
+                |                 'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+            .course-price
+                h3 {$_pls['tv.MinPrice']}
+                ul
+                    li {$_pls['tv.Course_times']}
+                    li {$_pls['tv.Course_count']}
+                    li {$_pls['tv.Course_hours']}
+        .courses-item(sort=5)
+            .course-form
+                a(href="/{$uri}")
+                    h4
+                        span {$pagetitle}
+                p Ближайший курс в Минске {$_pls['tv.nearDate']}
+                a(href!="/{$_modx->makeUrl(5)}")
+                    span Расписание в других городах
+                | {$_modx->runSnippet('!AjaxForm',[
+                |                 'snippet' => 'FormIt',
+                |                 'form' => '@FILE chunks/main/cursForm.html',
+                |                 'hooks' => 'email',
+                |                 'emailTo' => $_modx->config.MainEmail,
+                |                 'emailCC' => $_modx->config.MainEmail,
+                |                 'emailFrom' => 'admin@s9831.h6.modhost.pro',
+                |                 'emailSubject' => 'Заявка на запись на курс',
+                |                 'emailTpl' => 'SentCursTpl',
+                |                 'validate' => 'phone:required',
+                |                 'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+            .course-price
+                h3 {$_pls['tv.MinPrice']}
+                ul
+                    li {$_pls['tv.Course_times']}
+                    li {$_pls['tv.Course_count']}
+                    li {$_pls['tv.Course_hours']}
+
+

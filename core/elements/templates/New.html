@@ -1,0 +1,15 @@
+{extends 'file:templates/Base.html'} {block 'content'}
+<!-- Section content-->
+<section id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <p class="date">[[*publishedon:dateRU]]</p>
+        <h2>[[*pagetitle]]</h2><img src="[[+ms2g.0.url]]" alt=""/><br/>
+        <div class="text">
+          <p>[[*content]]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>{/block}

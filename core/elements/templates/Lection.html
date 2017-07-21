@@ -1,0 +1,76 @@
+{extends 'file:templates/Base.html'} {block 'content'}
+<!-- Section content-->
+<section id="content">
+  <div class="container">
+    <div class="row info">
+      <div class="col-sm-9 col-xs-12">
+        <div class="row programm">
+          <div class="col-xs-12">
+            <h3>Программа семинара</h3>{$_modx->resource.ProgLect}
+            {$_modx->runSnippet('!getImageList',[
+            'tvname' => 'Course_prog',
+            'tpl' => 'CourseProgItem'])}
+          </div>
+        </div>
+        <div class="row certificate visible-xs">
+          <div class="col-xs-7"><a href="/{$_modx->resource.Course_sertificate}"><img src="/{$_modx->resource.Course_sertificate}" alt=""/></a></div>
+          <div class="col-xs-5">
+            <p>{$_modx->resource.CourseSertifName}</p>
+          </div>
+        </div>
+        <div class="row timetable">
+          <div class="col-sm-12">
+            <h3>Ближайшее начало занятий и цена</h3>
+          </div>{$_modx->runSnippet('!pdoResources',[
+          'parents' => 3,
+          'resources' => $_modx->resource.id,
+          'includeTVs' => 'timetable',
+          'tpl' => 'Course_timetable2'])}
+        </div>
+      </div>
+      <div class="col-sm-3 hidden-xs certificate"><a href="/{$_modx->resource.Course_sertificate}"><img src="/{$_modx->resource.Course_sertificate}" alt=""/></a>
+        <p>{$_modx->resource.CourseSertifName}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="order">
+          <div class="row info">
+            <div class="col-sm-8 col-xs-12">
+              {$_modx->runSnippet('!AjaxForm',[
+                              'snippet' => 'FormIt',
+                              'form' => '@FILE chunks/cources/CursPageForm.html',
+                              'hooks' => 'email',
+                              'emailTo' => $_modx->config.MainEmail,
+                              'emailCC' => 'messages@axora.by',
+                              'emailFrom' => 'admin@s9831.h6.modhost.pro',
+                              'emailSubject' => 'Заявка на запись на семинар',
+                              'emailTpl' => 'SentCursTpl',
+                              'validate' => 'phone:required',
+                              'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+            </div>
+            <div class="col-sm-4 col-xs-12 contacts">
+              <h3>+ 375 29 652-63-66</h3>
+              <p>позвоните и узнайте о комплектации групп</p><a href="/{7 | url}"><span>Телефон в Минске<br class="hidden-xs"/>и других городах</span></a>
+            </div>
+          </div>{if $_modx->resource.Course_doc == 1}
+          <div class="row">
+            <div class="col-xs-12 docs">
+              <h4>Документы для записи на семинар:</h4>
+              <p>{$_modx->resource.Course_docs}</p>
+            </div>
+          </div>{/if}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SEO Text-->{if $_modx->resource.Seo_text != 0}
+<section id="seo-text">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-9">{$_modx->resource.Seo_block}</div>
+    </div>
+  </div>
+</section>{/if}
+{/block}

@@ -1,0 +1,47 @@
+
+<meta charset="utf-8"/>
+<title>Академтранс - {$_modx->resource.pagetitle}</title>
+<meta name="description" content="{$_modx->resource.description}"/>
+<meta name="keywords" content="{$_modx->resource.keywords}"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta property="og:image" content="path/to/image.jpg"/>
+<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon"/>
+<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-touch-icon-72x72.png"/>
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-touch-icon-114x114.png"/>{switch $_modx->resource.template}
+  {case 2}
+     {include 'file:chunks/general/headers/headIndex.html'}
+  {case 3}
+     {include 'file:chunks/general/headers/headCources.html'}
+  {case 4}
+     {include 'file:chunks/general/headers/headerPayment.html'}
+  {case 5}
+     {include 'file:chunks/general/headers/headNews.html'}
+  {case 6}
+     {include 'file:chunks/general/headers/headContacts.html'}
+  {case 7}
+     {include 'file:chunks/general/headers/headAbout.html'}
+  {case 8}
+     {include 'file:chunks/general/headers/headCourse.html'}
+  {case 9}
+     {include 'file:chunks/general/headers/headTimetable.html'}
+  {case 11}
+     {include 'file:chunks/general/headers/headSection.html'}
+  {case 13}
+     {include 'file:chunks/general/headers/headSection.html'}
+  {case 14}
+     {include 'file:chunks/general/headers/headCourse.html'}
+  {case 15}
+     {include 'file:chunks/general/headers/headNew.html'}
+  {case 16}
+     {include 'file:chunks/general/headers/headCourse.html'}
+  {default}
+     {include 'file:chunks/general/headers/headIndex.html'}
+{/switch}
+<!-- Chrome, Firefox OS and Opera-->
+<meta name="theme-color" content="#000"/>
+<!-- Windows Phone-->
+<meta name="msapplication-navbutton-color" content="#000"/>
+<!-- iOS Safari-->
+<meta name="apple-mobile-web-app-status-bar-style" content="#000"/>

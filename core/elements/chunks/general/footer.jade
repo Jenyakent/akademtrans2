@@ -1,0 +1,94 @@
+// Footer
+footer
+    .container
+        #footer-menu.row.clearfix
+            .col-sm-3.col-xs-6
+                .wrapper.wrapper1
+                    a.parent(href='/{2 | url}')
+                        span Курсы
+                    |{$_modx->runSnippet('pdoResources',[
+                    |'parents' => 2,
+                    |'depth' => 0,
+                    |'tpl' => '@INLINE <a href="/{$uri}"><span>{$pagetitle}</span></a>',
+                    |'sortby' => 'menuindex',
+                    |'sortdir' => 'ASC'])}
+            .col-sm-3.col-xs-6
+                .wrapper.wrapper1
+                    a.parent(href='/{3 | url}')
+                        span Семинары
+                    | {$_modx->runSnippet('pdoResources',[
+                    | 'parents' => 3,
+                    | 'depth' => 0,
+                    | 'tpl' => '@INLINE <a href="/{$uri}"><span>{$pagetitle}</span></a>',
+                    | 'sortby' => 'menuindex',
+                    | 'sortdir' => 'ASC'])}
+                    a.parent(href='/{4 | url}')
+                        span Услуги
+                    | {$_modx->runSnippet('pdoResources',[
+                    | 'parents' => 4,
+                    | 'depth' => 0,
+                    | 'tpl' => '@INLINE <a href="/{$uri}"><span>{$pagetitle}</span></a>',
+                    | 'sortby' => 'menuindex',
+                    | 'sortdir' => 'ASC'])}
+            .col-sm-3.col-xs-6
+                .wrapper.wrapper2.
+                    {$_modx->runSnippet('!pdoResources',[
+                    'parents' => 0,
+                    'resources' => '5,25,6,7,8',
+                    'tpl' => '@INLINE <a class="parent" href="/{$uri}"><span>{$pagetitle}</span></a>',
+                    'sortby' => 'menuindex',
+                    'sortdir' => 'ASC'])}
+            .col-sm-3.col-xs-6
+                .wrapper.wrapper2
+                    a.img(href='http://ipay.by', target="_blank")
+                        img(src='/assets/img/ipai.jpg', alt='ipai')
+                    a.img(href='http://raschet.by', target="_blank")
+                        img(src='/assets/img/erip.jpg', alt='erip')
+                    | {$_modx->runSnippet('FileAttach',[
+                    |'makeUrl' => 'true',
+                    |'showSize' => 'true',
+                    |'resource' => 8,
+                    |'tpl' => 'DocFooter'])}
+
+        #footer-info.row
+            .col-sm-9.col-xs-12
+                p Учреждение образования «Центр повышения квалификации руководящих работников и специалистов «Академтранс», © 2017
+                #footer-data.row
+                    .address.col-sm-8.col-xs-12
+                        p {$_modx->config.MainAddress}
+                        p Расчетный счет 3012 038 003 405
+                        p УНП 190437354
+                    .contacts.col-sm-4.col-xs-12
+                        p {$_modx->config.MainPhone2}
+                        p Пн-пт с 9 до 16
+                        p {$_modx->config.MainEmail}
+            .col-sm-3.col-xs-12
+                a#developer(href='https://axora.by/')
+                    img(src='/assets/img/f-logo.png', alt='axora')
+                    p Разработка сайта
+        #footer-social.row
+            .col-xs-12
+                a.vk(href='')
+                    i.fa.fa-vk
+                    p Поделиться
+                a.facebook(href='')
+                    i.fa.fa-facebook
+                    p Поделиться
+                a.odnoklassniki(href='')
+                    i.fa.fa-odnoklassniki
+                    p Поделиться
+// Extra & scripts section
+.top.hidden-xs
+    i.fa.fa-arrow-up
+.hidden.
+    {$_modx->runSnippet('!ecForm',[
+    'tplForm' => 'Review.ecForm'])}
+
+
+
+
+
+
+
+
+

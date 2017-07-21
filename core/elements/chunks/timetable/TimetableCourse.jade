@@ -1,0 +1,14 @@
+.row.table-row
+    .col-sm-5.col-xs-12.caption
+        a(href='/{$id | url}')
+            span {$pagetitle}
+        p
+            strong Длительность:
+            br
+            | {$_pls['tv.Course_times']}, {$_pls['tv.Course_count']}, {$_pls['tv.Course_hours']}
+    .col-sm-7.col-xs-12.
+        [[getImageList?
+        &tvname=`timetable`
+        &tpl=`CourseTimetableList`
+        &docid=`[[+id]]`
+        ]]

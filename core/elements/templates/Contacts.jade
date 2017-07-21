@@ -1,0 +1,112 @@
+|{extends 'file:templates/Base.html'} {block 'content'}
+// Section map
+section#map-box
+    .container
+        .row
+            .col-xs-12
+                h2 Мы работаем в 17 городах
+        .row
+            .col-sm-2.col-xs-12
+                .towns-wrapper
+                    .select
+                        span Минск
+                    .dropdown
+                        ul.towns-list.
+                            {$_modx->runSnippet('pdoResources',[
+                            'parents' => 22,
+                            'limit' => 30,
+                            'includeTVs' => 'coords2',
+                            'tpl' => '@FILE chunks/main/TownItem.html',
+                            'tplFirst' => '@FILE chunks/main/TownItemActive.html',
+                            'sortby' => 'menuindex',
+                            'sortdir' => 'ASC'])}
+            .col-sm-10.col-xs-12
+                .map-body
+                    #map-here.maptop.
+                        {$_modx->runSnippet('pdoResources',[
+                        'parents' => 22,
+                        'limit' => 30,
+                        'includeTVs' => 'coords2,CityAddress,CityPhone',
+                        'tpl' => '@FILE chunks/main/MapItem.html',
+                        'tplFirst' => '@FILE chunks/main/MapItemActive.html',
+                        'sortby' => 'menuindex',
+                        'sortdir' => 'ASC'])}
+                .map-end
+// Section requisites
+section#requisites
+    .container
+        .row
+            .col-xs-12
+                h2.title Учреждение образования «Центр повышения квалификации “Академтранс”»
+            .col-sm-9.col-xs-12.requisites
+                .row
+                    .col-sm-3.col-xs-6.caption
+                        h4 Юр. адрес
+                    .col-sm-9.col-xs-6.info
+                        p 220089, г. Минск, ул. Железнодорожная, д. 33А, к. 404
+                .row
+                    .col-sm-3.col-xs-6.caption
+                        h4 Телефон/факс
+                    .col-sm-9.col-xs-6.info
+                        p 8 017 366-88-77
+                .row
+                    .col-sm-3.col-xs-6.caption
+                        h4 Директор
+                    .col-sm-9.col-xs-6.info
+                        p Бурак А. М.
+                .row
+                    .col-sm-3.col-xs-6.caption
+                        h4 УНП
+                    .col-sm-9.col-xs-6.info
+                        p 190437354
+                .row
+                    .col-sm-3.col-xs-6.caption
+                        h4 Расчетный счет
+                    .col-sm-9.col-xs-6.info
+                        p 3012 038 003 405
+                .row
+                    .col-sm-3.col-xs-6.caption
+                        h4 БИК
+                    .col-sm-9.col-xs-6.info
+                        p 153 001 614
+                .row
+                    .col-sm-3.col-xs-6.caption
+                        h4 Банк ф-л
+                    .col-sm-9.col-xs-6.info
+                        p № 514 ОАО «АСБ Беларусбанк»
+            .col-sm-3.col-xs-12.contacts
+                .col-sm-12.col-xs-6
+                    h4 Телефоны
+                    p 8 017 366-88-77
+                    p +375 29 652-63-66
+                    p +375 44 743-30-67
+                .col-sm-12.col-xs-6
+                    h4 Работаем
+                    p Пн-пт с 9 до 16
+// Section order
+section#order
+    .container
+        .row
+            .col-sm-4.col-xs-12
+                .col-sm-12.col-xs-6
+                    img(src='/assets/img/zajavka.png', alt='')
+                .col-sm-12.col-xs-6.
+                    {$_modx->runSnippet('FileAttach',[
+                                      'makeUrl' => 'true',
+                                      'showSize' => 'true'
+                                      'tpl' => 'DocItem'])}
+            .col-sm-8.col-xs-12.text
+                h3 Заявка на обучение
+                p В форме указаны все виды обучения. Удалите лишние строчки и распечатайте на своём фирменном бланке.
+                p Для выставления счета укажите реквизиты, список обучаемых лиц и полное название курса. Отправьте на факс или e-mail.
+                p
+                    strong Факс
+                    |  8 017 366-88-77
+                    br
+                    | Для отправки факсом текст заявки сделайте достаточно крупным 14 pt, а качество передачи факса — «fine».
+                p
+                    strong E-mail
+                    |  akademtrans@gmail.com
+                    br
+                    | В письме продублируйте реквизиты и укажите тему «Заявка на обучение». После отправки перезвоните и убедитесь, что письмо принято.
+|{/block}

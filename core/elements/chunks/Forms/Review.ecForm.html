@@ -1,0 +1,33 @@
+
+<div id="send-review">
+  <h2>Оставить отзыв</h2>
+  <form method="post" role="form" id="ec-form-[[+fid]]" data-fid="[[+fid]]" action="" class="form-review form-horizontal">
+    <input type="hidden" name="thread" value="[[+thread]]"/><div class="form-group ec-antispam" style="display:none">
+    <label for="ec-[[+antispam_field]]-[[+fid]]" class="control-label">[[%ec_fe_message_antismap]]</label>
+    <input type="text" name="[[+antispam_field]]" class="form-control" id="ec-[[+antispam_field]]-[[+fid]]" value="" />
+    </div>
+    <div class="form-group">
+      <label for="ec-user_name-[[+fid]]" class="col-sm-2 hidden-xs">Имя и фамилия</label>
+      <div class="col-sm-10 col-xs-12">
+        <input id="ec-user_name-[[+fid]]" value="[[+user_name]]" type="text" name="user_name" placeholder="Ваше имя и фамилия..." required="" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ec-subject-[[+fid]]" class="col-sm-2 hidden-xs">Курс</label>
+      <div class="col-sm-10 col-xs-12">
+        <input type="text" name="subject" id="ec-subject-[[+fid]]" value="[[+subject]]" placeholder="Проходили курс..." required="" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group form-group-textarea">
+      <label for="ec-text-[[+fid]]" class="col-sm-2 hidden-xs">Отзыв</label>
+      <div class="col-sm-10 col-xs-12">
+        <textarea id="ec-text-[[+fid]]" name="text" rows="5" placeholder="Оставьте отзыв..." required="" class="form-control">[[+text]]</textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8 col-xs-12">
+        <input type="submit" name="send" value="[[%ec_fe_send]]"/>
+      </div>
+    </div>
+  </form>
+</div><div id="ec-form-success-[[+fid]]"></div>

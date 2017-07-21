@@ -1,0 +1,21 @@
+|{extends 'file:templates/Base.html'} {block 'content'}
+// Section courses
+section#courses
+    .container
+        .row
+            .col-xs-12
+                ul.courses-list.
+                    {$_modx->runSnippet('pdoResources',[
+                    'parents' => $_modx->resource.id,
+                    'tpl' => '@FILE chunks/section/SectionItem.html',
+                    'sortby' => 'menuindex',
+                    'includeTVs' => 'nearDate,MinPrice,Course_times,Course_count,Course_hours',
+                    'sortdir' => 'ASC'])}
+| {if $_modx->resource.Seo_text != 0}
+section#seo-text
+    .container
+        .row
+            .col-sm-12.col-md-9.
+                {$_modx->resource.Seo_block}
+| {/if}
+|{/block}

@@ -1,0 +1,16 @@
+|{extends 'file:templates/Base.html'} {block 'content'}
+// Section content
+section#content
+    .container
+        .row
+            .col-md-10.col-md-offset-1.col-xs-12
+                p.date [[*publishedon:dateRU]]
+                h2 [[*pagetitle]]
+                img(src="[[+ms2g.0.url]]" alt='')
+                br
+                .text
+                    p [[*content]]
+
+
+|{/block}
+

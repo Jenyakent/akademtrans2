@@ -1,0 +1,148 @@
+{extends 'file:templates/Base.html'} {block 'content'}
+<!-- Section map-->
+<section id="map-box">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Мы работаем в 17 городах</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 col-xs-12">
+        <div class="towns-wrapper">
+          <div class="select"><span>Минск</span></div>
+          <div class="dropdown">
+            <ul class="towns-list">
+              {$_modx->runSnippet('pdoResources',[
+              'parents' => 22,
+              'limit' => 30,
+              'includeTVs' => 'coords2',
+              'tpl' => '@FILE chunks/main/TownItem.html',
+              'tplFirst' => '@FILE chunks/main/TownItemActive.html',
+              'sortby' => 'menuindex',
+              'sortdir' => 'ASC'])}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-10 col-xs-12">
+        <div class="map-body">
+          <div id="map-here" class="maptop">
+            {$_modx->runSnippet('pdoResources',[
+            'parents' => 22,
+            'limit' => 30,
+            'includeTVs' => 'coords2,CityAddress,CityPhone',
+            'tpl' => '@FILE chunks/main/MapItem.html',
+            'tplFirst' => '@FILE chunks/main/MapItemActive.html',
+            'sortby' => 'menuindex',
+            'sortdir' => 'ASC'])}
+          </div>
+        </div>
+        <div class="map-end"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section requisites-->
+<section id="requisites">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="title">Учреждение образования «Центр повышения квалификации “Академтранс”»</h2>
+      </div>
+      <div class="col-sm-9 col-xs-12 requisites">
+        <div class="row">
+          <div class="col-sm-3 col-xs-6 caption">
+            <h4>Юр. адрес</h4>
+          </div>
+          <div class="col-sm-9 col-xs-6 info">
+            <p>220089, г. Минск, ул. Железнодорожная, д. 33А, к. 404</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 col-xs-6 caption">
+            <h4>Телефон/факс</h4>
+          </div>
+          <div class="col-sm-9 col-xs-6 info">
+            <p>8 017 366-88-77</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 col-xs-6 caption">
+            <h4>Директор</h4>
+          </div>
+          <div class="col-sm-9 col-xs-6 info">
+            <p>Бурак А. М.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 col-xs-6 caption">
+            <h4>УНП</h4>
+          </div>
+          <div class="col-sm-9 col-xs-6 info">
+            <p>190437354</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 col-xs-6 caption">
+            <h4>Расчетный счет</h4>
+          </div>
+          <div class="col-sm-9 col-xs-6 info">
+            <p>3012 038 003 405</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 col-xs-6 caption">
+            <h4>БИК</h4>
+          </div>
+          <div class="col-sm-9 col-xs-6 info">
+            <p>153 001 614</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 col-xs-6 caption">
+            <h4>Банк ф-л</h4>
+          </div>
+          <div class="col-sm-9 col-xs-6 info">
+            <p>№ 514 ОАО «АСБ Беларусбанк»</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-12 contacts">
+        <div class="col-sm-12 col-xs-6">
+          <h4>Телефоны</h4>
+          <p>8 017 366-88-77</p>
+          <p>+375 29 652-63-66</p>
+          <p>+375 44 743-30-67</p>
+        </div>
+        <div class="col-sm-12 col-xs-6">
+          <h4>Работаем</h4>
+          <p>Пн-пт с 9 до 16</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section order-->
+<section id="order">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-xs-12">
+        <div class="col-sm-12 col-xs-6"><img src="/assets/img/zajavka.png" alt=""/></div>
+        <div class="col-sm-12 col-xs-6">
+          {$_modx->runSnippet('FileAttach',[
+                            'makeUrl' => 'true',
+                            'showSize' => 'true'
+                            'tpl' => 'DocItem'])}
+        </div>
+      </div>
+      <div class="col-sm-8 col-xs-12 text">
+        <h3>Заявка на обучение</h3>
+        <p>В форме указаны все виды обучения. Удалите лишние строчки и распечатайте на своём фирменном бланке.</p>
+        <p>Для выставления счета укажите реквизиты, список обучаемых лиц и полное название курса. Отправьте на факс или e-mail.</p>
+        <p><strong>Факс</strong> 8 017 366-88-77<br/>Для отправки факсом текст заявки сделайте достаточно крупным 14 pt, а качество передачи факса — «fine».</p>
+        <p><strong>E-mail</strong> akademtrans@gmail.com<br/>В письме продублируйте реквизиты и укажите тему «Заявка на обучение». После отправки перезвоните и убедитесь, что письмо принято.</p>
+      </div>
+    </div>
+  </div>
+</section>{/block}

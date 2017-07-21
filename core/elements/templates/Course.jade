@@ -1,0 +1,75 @@
+|{extends 'file:templates/Base.html'} {block 'content'}
+// Section content
+section#content
+    .container
+        .row.info
+            .col-sm-9.col-xs-12
+                .row.programm
+                    .col-xs-12
+                        h3 Программа курса
+                        |{$_modx->runSnippet('!getImageList',[
+                        |'tvname' => 'Course_prog',
+                        |'tpl' => 'CourseProgItem'])}
+                .row.certificate.visible-xs
+                    .col-xs-7
+                        a(href!="/{$_modx->resource.Course_sertificate}")
+                            img(src!="/{$_modx->resource.Course_sertificate}", alt='')
+                    .col-xs-5
+                        p {$_modx->resource.CourseSertifName}
+                .row.timetable
+                    .col-sm-12
+                        h3 Ближайшее начало занятий и цена
+                    | {$_modx->runSnippet('!pdoResources',[
+                    | 'parents' => 2,
+                    | 'resources' => $_modx->resource.id,
+                    | 'includeTVs' => 'timetable',
+                    | 'tpl' => 'Course_timetable2'])}
+
+
+            .col-sm-3.hidden-xs.certificate
+                a(href!="/{$_modx->resource.Course_sertificate}")
+                    img(src!="/{$_modx->resource.Course_sertificate}", alt='')
+                p {$_modx->resource.CourseSertifName}
+        .row
+            .col-xs-12
+                .order
+                    .row.info
+                        .col-sm-8.col-xs-12
+                            h3 {$_modx->resource.longtitle}
+                            |{$_modx->runSnippet('!AjaxForm',[
+                            |'snippet' => 'FormIt',
+                            |'form' => '@FILE chunks/cources/CursPageForm.html',
+                            |'hooks' => 'email',
+                            |'emailTo' => $_modx->config.MainEmail,
+                            |'emailCC' => 'messages@axora.by',
+                            |'emailFrom' => 'admin@s9831.h6.modhost.pro',
+                            |'emailSubject' => 'Заявка на запись на курс',
+                            |'emailTpl' => 'SentCursTpl',
+                            |'validate' => 'phone:required',
+                            |'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+
+                        .col-sm-4.col-xs-12.contacts
+                            h3 + 375 29 652-63-66
+                            p позвоните и узнайте о комплектации групп
+                            a(href='/{7 | url}')
+                                span
+                                    | Телефон в Минске
+                                    br.hidden-xs
+                                    | и других городах
+                    | {if $_modx->resource.Course_doc == 1}
+                    .row
+                        .col-xs-12.docs
+                            h4 Документы для записи на курсы:
+                            p {$_modx->resource.Course_docs}
+                    | {/if}
+
+// SEO Text
+| {if $_modx->resource.Seo_text != 0}
+section#seo-text
+    .container
+        .row
+            .col-sm-12.col-md-9.
+                {$_modx->resource.Seo_block}
+| {/if}
+
+|{/block}

@@ -1,0 +1,96 @@
+|{extends 'file:templates/Base.html'} {block 'content'}
+// Section content
+section#content
+    .container
+        .row.data-block
+            .col-sm-2.col-sm-push-10.col-xs-12.menu
+                .col-xs-6
+                    .visible-xs.select.select-years
+                        span 2017
+                    ul.years
+                        li.active
+                            a(href='')
+                                span 2017
+                        li
+                            a(href='')
+                                span 2016
+                .col-xs-6
+                    .visible-xs.select.select-months
+                        span Май
+                    ul.months
+                        li.active
+                            a(href='')
+                                span Май
+                        li
+                            a(href='')
+                                span Апрель
+                        li
+                            a(href='')
+                                span Март
+                        li
+                            a(href='')
+                                span Февраль
+                        li
+                            a(href='')
+                                span Январь
+            .col-sm-10.col-sm-pull-2.col-xs-12.news-list
+                .news-item
+                    .col-sm-4.col-xs-9.logo
+                        a(href='news_post.html')
+                            img(src='/assets/img/news/novosti_img1.jpg', alt='')
+                    .col-sm-8.col-xs-12.info
+                        span 22 мая
+                        a(href='news_post.html')
+                            h3 Новый семинар «Режим труда и отдыха водителей»
+                        p
+                            | За время обучения на курсах вы ознакомитесь с положением о рабочем времени и времени отдыха для водителей контролем за соблюдением режима труда и отдыха водителей целями разработки международного соглашения ЕСТР основными положениями соглашения ЕСТР особенностями режимов труда и отдыха водителей в странах ЕС заполнением тахограммных дисков и др.
+                .news-item
+                    .col-sm-4.col-xs-9.logo
+                        a(href='news_post.html')
+                            img(src='/assets/img/news/novosti_img2.jpg', alt='')
+                    .col-sm-8.col-xs-12.info
+                        span 10 февраля
+                        a(href='news_post.html')
+                            h3 Новый семинар «Режим труда и отдыха водителей»
+                        p
+                            | За время обучения на курсах вы ознакомитесь с положением о рабочем времени и времени отдыха для водителей контролем за соблюдением режима труда и отдыха водителей целями разработки международного соглашения ЕСТР основными положениями соглашения ЕСТР особенностями режимов труда и отдыха водителей в странах ЕС заполнением тахограммных дисков и др.
+                .news-item
+                    .col-sm-4.col-xs-9.logo
+                        a(href='news_2.html')
+                            img(src='/assets/img/news/novosti_img3.jpg', alt='')
+                    .col-sm-8.col-xs-12.info
+                        span 3 января
+                        a(href='news_2.html')
+                            h3 Новый семинар «Режим труда и отдыха водителей»
+                        p
+                            | За время обучения на курсах вы ознакомитесь с положением о рабочем времени и времени отдыха для водителей контролем за соблюдением режима труда и отдыха водителей целями разработки международного соглашения ЕСТР основными положениями соглашения ЕСТР особенностями режимов труда и отдыха водителей в странах ЕС заполнением тахограммных дисков и др.
+        |[[!+page.nav]]
+        .row.pages
+            .col-sm-12.hidden-xs
+                ul
+                    li.active
+                        a(href='')
+                            span 1
+                    li
+                        a(href='')
+                            span 2
+                    li
+                        a(href='')
+                            span 3
+                    li
+                        a(href='')
+                            span 4
+                    li
+                        a(href='')
+                            span 5
+                    li
+                        a(href='')
+                            span Следующая
+            .col-xs-12.visible-xs.mobile
+                a.show-more(href='')
+                    span Показать еще
+                a.on-top(href='#content')
+                    span Наверх
+//Test
+|[[*content]]
+|{/block}

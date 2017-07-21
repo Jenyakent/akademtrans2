@@ -1,0 +1,56 @@
+|{extends 'file:templates/Base.html'} {block 'content'}
+
+
+// Section content
+section#content
+    .container
+        .row
+            .col-xs-12
+                ul.type-menu
+                    li.active
+                        a(href='')
+                            span Курсы
+                    li
+                        a(href='')
+                            span Лекции
+                .col-xs-12
+                    ul.list-menu.
+                        {$_modx->runSnippet('pdoResources',[
+                        'parents' => 2,
+                        'depth' => '0',
+                        'tpl' => '@FILE chunks/timetable/TimetableCourseList.html',
+                        'tplFirst' => '@FILE chunks/timetable/TimetableCourseListActive.html',
+                        'sortby' => 'menuindex',
+                         'sortdir' => 'ASC'])}
+        .row.timetable
+            .col-xs-12
+                .type-item.type-item-1
+                    // Курсы
+                    .list-item.list-item-1
+                        // Международные перевозки
+                        .table-head-stub
+                        .row.table-head
+                            .col-sm-5.col-xs-12.caption
+                                p Курс
+                            .col-sm-2.col-xs-4.towns
+                                p Город
+                            .col-sm-3.col-xs-4.date
+                                p Дата
+                            .col-sm-2.col-xs-4.price
+                                p Цена, бел.руб.
+                        //Parent по тапу выбора направлений
+                        | {$_modx->runSnippet('pdoResources',[
+                        | 'parents' => 23,
+                        | 'includeTVs' => 'timetable,Course_times,Course_count,Course_hours',
+                        | 'tpl' => '@FILE chunks/timetable/TimetableCourse.html'])}
+// SEO
+| {if $_modx->resource.Seo_text != 0}
+section#seo-text
+    .container
+        .row
+            .col-sm-12.col-md-9.
+                {$_modx->resource.Seo_block}
+| {/if}
+
+script(src="/assets/js/timetable.min.js")
+|{/block}

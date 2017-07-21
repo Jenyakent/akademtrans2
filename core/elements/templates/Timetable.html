@@ -1,0 +1,63 @@
+{extends 'file:templates/Base.html'} {block 'content'}
+<!-- Section content-->
+<section id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="type-menu">
+          <li class="active"><a href=""><span>Курсы</span></a></li>
+          <li><a href=""><span>Лекции</span></a></li>
+        </ul>
+        <div class="col-xs-12">
+          <ul class="list-menu">
+            {$_modx->runSnippet('pdoResources',[
+            'parents' => 2,
+            'depth' => '0',
+            'tpl' => '@FILE chunks/timetable/TimetableCourseList.html',
+            'tplFirst' => '@FILE chunks/timetable/TimetableCourseListActive.html',
+            'sortby' => 'menuindex',
+             'sortdir' => 'ASC'])}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row timetable">
+      <div class="col-xs-12">
+        <div class="type-item type-item-1">
+          <!-- Курсы-->
+          <div class="list-item list-item-1">
+            <!-- Международные перевозки-->
+            <div class="table-head-stub"></div>
+            <div class="row table-head">
+              <div class="col-sm-5 col-xs-12 caption">
+                <p>Курс</p>
+              </div>
+              <div class="col-sm-2 col-xs-4 towns">
+                <p>Город</p>
+              </div>
+              <div class="col-sm-3 col-xs-4 date">
+                <p>Дата</p>
+              </div>
+              <div class="col-sm-2 col-xs-4 price">
+                <p>Цена, бел.руб.</p>
+              </div>
+            </div>
+            <!--Parent по тапу выбора направлений-->{$_modx->runSnippet('pdoResources',[
+            'parents' => 23,
+            'includeTVs' => 'timetable,Course_times,Course_count,Course_hours',
+            'tpl' => '@FILE chunks/timetable/TimetableCourse.html'])}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SEO-->{if $_modx->resource.Seo_text != 0}
+<section id="seo-text">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-9">{$_modx->resource.Seo_block}</div>
+    </div>
+  </div>
+</section>{/if}
+<script src="/assets/js/timetable.min.js"></script>{/block}

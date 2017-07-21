@@ -1,0 +1,240 @@
+|{extends 'file:templates/Base.html'} {block 'content'}
+
+<script>
+
+</script>
+// Form request
+section#request
+    .container
+        .row
+            .col-sm-12.col-md-10.col-md-offset-1.col-xs-12.
+                {$_modx->runSnippet('!AjaxForm',[
+                'snippet' => 'FormIt',
+                'form' => '@FILE chunks/main/headForm.html',
+                'hooks' => 'email',
+                'emailTo' => $_modx->config.MainEmail,
+                'emailCC' => 'messages@axora.by',
+                'emailFrom' => 'admin@s9831.h6.modhost.pro',
+                'emailSubject' => 'Заявка на запись на курсы',
+                'emailTpl' => 'SentTpl',
+                'validate' => 'phone:required',
+                'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+
+// Section advantages
+section#advantages
+    .container
+        .row
+            .col-xs-12
+                h2 Наши преимущества
+            .col-md-10.col-sm-9.col-xs-12
+                .row
+                    .col-sm-4.col-xs-12.
+                        {$_modx->runSnippet('pdoResources',[
+                         'parents' => 9,
+                         'tpl' => '@FILE chunks/main/AdvantagesItem.html',
+                         'where'=>'[" menuindex % 3 = 1 "]',
+                         'sortby' => 'menuindex',
+                         'sortdir' => 'ASC'])}
+                    .col-sm-4.col-xs-12.
+                        {$_modx->runSnippet('pdoResources',[
+                        'parents' => 9,
+                        'tpl' => '@FILE chunks/main/AdvantagesItem.html',
+                        'where'=>'[" menuindex % 3 = 2 "]',
+                        'sortby' => 'menuindex',
+                        'sortdir' => 'ASC'])}
+                    .col-sm-4.col-xs-12.
+                        {$_modx->runSnippet('pdoResources',[
+                        'parents' => 9,
+                        'tpl' => '@FILE chunks/main/AdvantagesItem.html',
+                        'where'=>'[" menuindex % 3 = 0 "]',
+                        'sortby' => 'menuindex',
+                        'sortdir' => 'ASC'])}
+
+            .col-md-2.col-sm-3.col-xs-12
+                .adv-summary.push
+                    span 20
+                    p лет работы
+                .adv-summary
+                    span 142
+                    p тысячи слушателей
+// Section events
+section#events
+    .container
+        #events-title.row
+            .col-xs-12
+                h2 Акции и бонусы
+        #events-banner.row
+            .col-sm-6.col-xs-12
+                .banner-text
+                    p
+                      span Скидка 10% на все курсы предъявителю бонусной карты.
+                    p Владелец карты каждые 3 месяца получает деньги за каждое использование его карты.
+                    a.hidden-xs(href="/assets/Files/akademtrans_bonusnayakarta.pdf" download)
+                        span Как получить и правила использования
+            .col-sm-6.col-xs-12
+                .banner-img
+                    .bonus-card
+                        img(src='/assets/img/bonus_card.png', alt='bonus card')
+                        img.upcard(src='/assets/img/bonus_card.png', alt='upcard')
+                        img.back(src='/assets/img/bonuscard%20pattern.svg', alt='back')
+                    a.hidden-sm.hidden-md.hidden-lg(href="/assets/Files/akademtrans_bonusnayakarta.pdf" download)
+                        span Как получить и правила использования
+        #events-list.row
+            .col-sm-6.col-xs-12.
+                {$_modx->runSnippet('pdoResources',[
+                'parents' => 11,
+                'tpl' => '@FILE chunks/main/EventItem.html',
+                'tplOdd' => '@INLINE',
+                'includeTVs' => 'eventColor,EventCost',
+                'sortby' => 'menuindex',
+                'sortdir' => 'ASC'])}
+
+            .col-sm-6.col-xs-12.
+                {$_modx->runSnippet('pdoResources',[
+                'parents' => 11,
+                'tpl' => '@INLINE',
+                'tplOdd' => '@FILE chunks/main/EventItem.html',
+                'sortby' => 'menuindex',
+                'includeTVs' => 'eventColor,EventCost',
+                'sortdir' => 'ASC'])}
+// Section courses
+section#courses
+    .container
+        #courses-title.row
+            .col-xs-12
+                h2
+                    | Проводим курсы, лекции и семинары
+                    br
+                    | по 6 направлениям
+        .row
+            .courses-wrapper
+                ul.courses-type-menu
+                    li.active
+                        h3 Курсы
+                        ul.courses-list-menu.
+                                {$_modx->runSnippet('pdoResources',[
+                                'parents' => 2,
+                                'depth' => '0',
+                                'totalVar' => 'total',
+                                'tpl' => '@FILE chunks/main/CourseList.html',
+                                'tplFirst' => '@FILE chunks/main/CourseListActive.html',
+                                'sortby' => 'menuindex',
+                                'sortdir' => 'ASC'])}
+                    li
+                        h3 Лекции
+                        ul.courses-list-menu
+                            li.active
+                                .courses-list.
+                                    {$_modx->runSnippet('pdoResources',[
+                                     'parents' => 3,
+                                     'idx' => 1,
+                                     'tpl' => '@FILE chunks/main/CourseItem.html',
+                                     'tplFirst' => '@FILE chunks/main/CourseItemActive.html',
+                                     'includeTVs' => 'nearDate,MinPrice,Course_times,Course_count,Course_hours',
+                                     'sortby' => 'menuindex',
+                                     'sortdir' => 'ASC'])}
+                    li
+                        h3 Услуги
+                        ul.courses-list-menu
+                            li.active
+                                .courses-list.
+                                    {$_modx->runSnippet('pdoResources',[
+                                    'parents' => 4,
+                                    'idx' => 1,
+                                    'tpl' => '@FILE chunks/main/CourseItem.html',
+                                    'tplFirst' => '@FILE chunks/main/CourseItemActive.html',
+                                    'includeTVs' => 'nearDate,MinPrice,Course_times,Course_count,Course_hours',
+                                    'sortby' => 'menuindex',
+                                    'sortdir' => 'ASC'])}
+// Section License
+section#license
+    .container
+        .row
+            .col-xs-12
+                h2
+                    | Лицензированный центр подготовки
+                    br
+                    | работников и специалистов
+                p.info
+                    | Мы получили государственную лицензию и аккредетацию на ведение курсов повышения квалификации сотрудников, руководящих работников и специалистов. После прохождения курсов выдаем сертификаты государственного образца.
+        .row
+            .slider-license.owl-carousel.
+                {$_modx->runSnippet('ms2GalleryResources',[
+                'parents' => 20,
+                'tpl' => '@FILE chunks/main/LicenseItem.html',
+                'sortby' => 'menuindex',
+                'includeThumbs' => '192x267',
+                'includeOriginal' => 1,
+                'sortdir' => 'ASC'])}
+// Section reviews
+section#reviews
+    .container
+        .row
+            .col-xs-12
+                h2 Что о нас говорят наши выпускники
+                a(href='#send-review')
+                    span Оставить отзыв
+            .row
+                .col-xs-12
+                    .slider-reviews.owl-carousel.
+                        {$_modx->runSnippet('!ecMessages',[
+                        'tpl' => 'Review.ecMessages',
+                        'threads' => 'resource-1,resource-25'])}
+// Map
+section#map-box
+    .container
+        .row
+            .col-xs-12
+                h2 Мы работаем в 17 городах
+        .row
+            .col-sm-2.col-xs-12
+                .towns-wrapper
+                    .select
+                        span Минск
+                    .dropdown
+                        ul.towns-list.
+                            {$_modx->runSnippet('pdoResources',[
+                            'parents' => 22,
+                            'limit' => 30,
+                            'includeTVs' => 'coords2',
+                            'tpl' => '@FILE chunks/main/TownItem.html',
+                            'tplFirst' => '@FILE chunks/main/TownItemActive.html',
+                            'sortby' => 'menuindex',
+                            'sortdir' => 'ASC'])}
+            .col-sm-10.col-xs-12
+                .map-body
+                    #map-here.maptop.
+                        {$_modx->runSnippet('pdoResources',[
+                        'parents' => 22,
+                        'limit' => 30,
+                        'includeTVs' => 'coords2,CityAddress,CityPhone',
+                        'tpl' => '@FILE chunks/main/MapItem.html',
+                        'tplFirst' => '@FILE chunks/main/MapItemActive.html',
+                        'sortby' => 'menuindex',
+                        'sortdir' => 'ASC'])}
+
+                .map-end
+// Section callback
+section#callback
+    .container
+        .row
+            .col-md-6.col-sm-7.col-xs-12
+                .callback-title
+                    p.hidden-xs + 375 29 652-63-66
+                    a.visible-xs(href='tel:+375296526366')
+                        span + 375 29 652-63-66
+                    p Позвоните и узнайте информацию о комплектации групп
+            .col-md-6.col-sm-5.col-xs-12.
+                {$_modx->runSnippet('!AjaxForm',[
+                'snippet' => 'FormIt',
+                'form' => '@FILE chunks/main/footForm.html',
+                'hooks' => 'email',
+                'emailTo' => $_modx->config.MainEmail,
+                'emailCC' => 'messages@axora.by',
+                'emailFrom' => 'admin@s9831.h6.modhost.pro',
+                'emailSubject' => 'Заявка на запись на курсы',
+                'emailTpl' => 'SentTpl',
+                'validate' => 'phone:required',
+                'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+
+|{/block}

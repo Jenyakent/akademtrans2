@@ -1,0 +1,17 @@
+.row
+    .col-xs-12
+        h2 Мы работаем в [[+total]] городах
+.row
+    .col-sm-2.col-xs-12
+        .towns-wrapper
+            .select
+                span Минск
+            .dropdown
+                ul.towns-list.
+                    {$_modx->runSnippet('pdoResources',[
+                    'parents' => 22,
+                    'includeTVs' => 'coords2',
+                    'tpl' => '@FILE chunks/main/TownItem.html',
+                    'tplFirst' => '@FILE chunks/main/TownItemActive.html',
+                    'sortby' => 'menuindex',
+                    'sortdir' => 'ASC'])}

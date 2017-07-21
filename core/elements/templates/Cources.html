@@ -1,0 +1,35 @@
+{extends 'file:templates/Base.html'} {block 'content'}
+<!-- Section courses-->
+<section id="courses">
+  <div class="container">
+    <div class="row">
+      <div class="wrapper-stub"></div>
+      <div class="courses-wrapper">
+        <div class="col-sm-10 col-xs-12">
+          {$_modx->runSnippet('pdoMenu@CourseMenu',['idx' => 1])}
+          
+        </div>
+        <div class="col-sm-2 hidden-xs all-towns"><a href="/{$_modx->makeUrl(5)}"><span>Расписание во всех городах</span></a></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="courses-list-wrapper">
+        {$_modx->runSnippet('pdoResources',[
+         'parents' => 2,
+         'depth' => '0',
+         'tpl' => '@FILE chunks/cources/CourseList.html',
+         'sortby' => 'menuindex',
+         'sortdir' => 'ASC'])}
+        
+      </div>
+    </div>
+  </div>
+</section>{if $_modx->resource.Seo_text != 0}
+<section id="seo-text">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-9">{$_modx->resource.Seo_block}</div>
+    </div>
+  </div>
+</section>{/if}
+{/block}

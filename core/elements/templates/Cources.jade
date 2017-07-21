@@ -1,0 +1,31 @@
+|{extends 'file:templates/Base.html'} {block 'content'}
+// Section courses
+section#courses
+    .container
+        .row
+            .wrapper-stub
+            .courses-wrapper
+                .col-sm-10.col-xs-12.
+                    {$_modx->runSnippet('pdoMenu@CourseMenu',['idx' => 1])}
+
+                .col-sm-2.hidden-xs.all-towns
+                    a(href!="/{$_modx->makeUrl(5)}")
+                        span Расписание во всех городах
+        .row
+            .courses-list-wrapper.
+                {$_modx->runSnippet('pdoResources',[
+                 'parents' => 2,
+                 'depth' => '0',
+                 'tpl' => '@FILE chunks/cources/CourseList.html',
+                 'sortby' => 'menuindex',
+                 'sortdir' => 'ASC'])}
+
+| {if $_modx->resource.Seo_text != 0}
+section#seo-text
+    .container
+        .row
+            .col-sm-12.col-md-9.
+                {$_modx->resource.Seo_block}
+| {/if}
+|{/block}
+

@@ -1,0 +1,27 @@
+
+<li>
+  <div href="/{$id | url}" class="courses-item row">
+    <div class="course-form col-sm-10">
+      <h4><span>{$pagetitle}</span></h4>
+      <p>Ближайший курс в Минске {$_pls['tv.nearDate']}</p><a href="/{$_modx->makeUrl(5)}"><span>Расписание в других городах</span></a>{$_modx->runSnippet('!AjaxForm',[
+                      'snippet' => 'FormIt',
+                      'form' => '@FILE chunks/main/cursForm.html',
+                      'hooks' => 'email',
+                      'emailTo' => $_modx->config.MainEmail,
+                      'emailCC' => $_modx->config.MainEmail,
+                      'emailFrom' => 'admin@s9831.h6.modhost.pro',
+                      'emailSubject' => 'Заявка на запись на курс Section',
+                      'emailTpl' => 'SentCursTpl',
+                      'validate' => 'phone:required',
+                      'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+    </div>
+    <div class="course-price col-sm-2">
+      <h3>{$_pls['tv.MinPrice']}</h3>
+      <ul>
+        <li>{$_pls['tv.Course_times']}</li>
+        <li>{$_pls['tv.Course_count']}</li>
+        <li>{$_pls['tv.Course_hours']}</li>
+      </ul>
+    </div>
+  </div>
+</li>

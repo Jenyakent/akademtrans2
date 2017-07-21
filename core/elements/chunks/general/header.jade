@@ -1,0 +1,57 @@
+// Header
+header
+    #up-header.container.hidden-xs
+        .row
+            .col-sm-6
+                .up-email
+                    a(href!='mailto:{$_modx->config.MainEmail}') {$_modx->config.MainEmail}
+            .col-sm-6
+                .up-phones
+                    img(src='/assets/img/velcom_icon.svg', alt='velcom')
+                    p {$_modx->config.MainPhone2}
+                    p {$_modx->config.MainPhone3}
+    .container-fluid
+        .row
+            .mobile-menu.hidden-mnu.hidden-sm.hidden-md.hidden-lg
+                .mob-buttons
+                    .mob-back-btn.mob-btn.hidden
+                        i.fa.fa-arrow-left
+                    .mob-close-btn.mob-btn(href='')
+                        i.fa.fa-times
+                .mob-contacts
+                    a(href!='mailto:{$_modx->config.MainEmail}')
+                        span {$_modx->config.MainEmail}
+                    .mob-phones
+                        img(src='/assets/img/velcom_icon.svg', alt='velcom')
+                        a(href!="tel:{$_modx->config.MainPhone2}")
+                            span {$_modx->config.MainPhone3}
+                        a(href!="{$_modx->config.MainPhone3}")
+                            span {$_modx->config.MainPhone3}
+                ul.mob-menu.
+                    {$_modx->runSnippet('pdoMenu@MobileMenu')}
+    #main-menu.container-fuid
+        .row
+            .mob-open-btn.hidden-sm.hidden-md.hidden-lg
+                i.fa.fa-bars
+            .col-xs-offset-1.col-xs-10
+                a.brand(href='/')
+                    img(src='/assets/img/logo.png', alt='logo')
+                    span Академтранс
+        .row
+            ul.main-menu.hidden-xs.
+              {$_modx->runSnippet('pdoMenu@headerMenu2')}
+
+    | {switch $_modx->resource.template}
+    |   {case 3}
+    |      {include 'file:chunks/general/headerDefault.html'}
+    |   {case 8}
+    |      {include 'file:chunks/cources/headerCourse.html'}
+    |   {case 13}
+    |      {include 'file:chunks/section/headerSection2.html'}
+    |   {case 11}
+    |      {include 'file:chunks/section/headerSection.html'}
+    |   {case 15}
+    |      {include 'file:chunks/general/headerNew.html'}
+    |   {default}
+    |      {include 'file:chunks/general/headerIndex.html'}
+    | {/switch}

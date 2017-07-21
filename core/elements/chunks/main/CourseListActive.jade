@@ -1,0 +1,15 @@
+li.active
+    h4.hidden-xs {$longtitle}
+        span [[+total]]
+    h4.visible-xs {$longtitle}
+        span [[+total]]
+    .courses-list.
+        {$_modx->runSnippet('pdoResources',[
+        'parents' => $id,
+        'idx' => 1,
+        'depth' => 1,
+        'tpl' => '@FILE chunks/main/CourseItem.html',
+        'tplLast' => '@FILE chunks/main/CourseItemActive.html',
+        'includeTVs' => 'nearDate,MinPrice,Course_times,Course_count,Course_hours',
+        'sortby' => 'menuindex',
+        'sortdir' => 'ASC'])}

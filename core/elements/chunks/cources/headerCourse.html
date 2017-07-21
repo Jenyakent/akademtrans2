@@ -1,0 +1,18 @@
+
+<div id="title-header" class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      {$_modx->runSnippet('pdoCrumbs',[
+      'tplWrapper' => '@INLINE <ul class="breadcrumbs">[[+output]]</ul>',
+      'tpl' => '@INLINE <li><a href="/[[+link]]"><span>[[+pagetitle]]</span></a></li>',
+      'showCurrent' => 0,
+      'from' => 2])}
+      <h1>{$_modx->resource.longtitle}</h1>
+      <ul class="timetable">
+        <li>{$_modx->resource.Course_times}</li>
+        <li>{$_modx->resource.Course_count}</li>
+        <li>{$_modx->resource.Course_hours}</li>
+      </ul>
+    </div>
+  </div>
+</div>

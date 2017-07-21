@@ -1,0 +1,80 @@
+
+<!-- Footer-->
+<footer>
+  <div class="container">
+    <div id="footer-menu" class="row clearfix">
+      <div class="col-sm-3 col-xs-6">
+        <div class="wrapper wrapper1"><a href="/{2 | url}" class="parent"><span>Курсы</span></a>{$_modx->runSnippet('pdoResources',[
+          'parents' => 2,
+          'depth' => 0,
+          'tpl' => '@INLINE <a href="/{$uri}"><span>{$pagetitle}</span></a>',
+          'sortby' => 'menuindex',
+          'sortdir' => 'ASC'])}
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="wrapper wrapper1"><a href="/{3 | url}" class="parent"><span>Семинары</span></a>{$_modx->runSnippet('pdoResources',[
+          'parents' => 3,
+          'depth' => 0,
+          'tpl' => '@INLINE <a href="/{$uri}"><span>{$pagetitle}</span></a>',
+          'sortby' => 'menuindex',
+          'sortdir' => 'ASC'])}<a href="/{4 | url}" class="parent"><span>Услуги</span></a>{$_modx->runSnippet('pdoResources',[
+          'parents' => 4,
+          'depth' => 0,
+          'tpl' => '@INLINE <a href="/{$uri}"><span>{$pagetitle}</span></a>',
+          'sortby' => 'menuindex',
+          'sortdir' => 'ASC'])}
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="wrapper wrapper2">
+          {$_modx->runSnippet('!pdoResources',[
+          'parents' => 0,
+          'resources' => '5,25,6,7,8',
+          'tpl' => '@INLINE <a class="parent" href="/{$uri}"><span>{$pagetitle}</span></a>',
+          'sortby' => 'menuindex',
+          'sortdir' => 'ASC'])}
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="wrapper wrapper2"><a href="http://ipay.by" target="_blank" class="img"><img src="/assets/img/ipai.jpg" alt="ipai"/></a><a href="http://raschet.by" target="_blank" class="img"><img src="/assets/img/erip.jpg" alt="erip"/></a>{$_modx->runSnippet('FileAttach',[
+          'makeUrl' => 'true',
+          'showSize' => 'true',
+          'resource' => 8,
+          'tpl' => 'DocFooter'])}
+        </div>
+      </div>
+    </div>
+    <div id="footer-info" class="row">
+      <div class="col-sm-9 col-xs-12">
+        <p>Учреждение образования «Центр повышения квалификации руководящих работников и специалистов «Академтранс», © 2017</p>
+        <div id="footer-data" class="row">
+          <div class="address col-sm-8 col-xs-12">
+            <p>{$_modx->config.MainAddress}</p>
+            <p>Расчетный счет 3012 038 003 405</p>
+            <p>УНП 190437354</p>
+          </div>
+          <div class="contacts col-sm-4 col-xs-12">
+            <p>{$_modx->config.MainPhone2}</p>
+            <p>Пн-пт с 9 до 16</p>
+            <p>{$_modx->config.MainEmail}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-12"><a id="developer" href="https://axora.by/"><img src="/assets/img/f-logo.png" alt="axora"/>
+          <p>Разработка сайта</p></a></div>
+    </div>
+    <div id="footer-social" class="row">
+      <div class="col-xs-12"><a href="" class="vk"><i class="fa fa-vk"></i>
+          <p>Поделиться</p></a><a href="" class="facebook"><i class="fa fa-facebook"></i>
+          <p>Поделиться</p></a><a href="" class="odnoklassniki"><i class="fa fa-odnoklassniki"></i>
+          <p>Поделиться</p></a></div>
+    </div>
+  </div>
+</footer>
+<!-- Extra & scripts section-->
+<div class="top hidden-xs"><i class="fa fa-arrow-up"></i></div>
+<div class="hidden">
+  {$_modx->runSnippet('!ecForm',[
+  'tplForm' => 'Review.ecForm'])}
+</div>

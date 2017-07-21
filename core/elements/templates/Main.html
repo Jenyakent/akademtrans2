@@ -1,0 +1,292 @@
+
+{extends 'file:templates/Base.html'} {block 'content'}
+<script>
+</script>
+<!-- Form request-->
+<section id="request">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1 col-xs-12">
+        {$_modx->runSnippet('!AjaxForm',[
+        'snippet' => 'FormIt',
+        'form' => '@FILE chunks/main/headForm.html',
+        'hooks' => 'email',
+        'emailTo' => $_modx->config.MainEmail,
+        'emailCC' => 'messages@axora.by',
+        'emailFrom' => 'admin@s9831.h6.modhost.pro',
+        'emailSubject' => 'Заявка на запись на курсы',
+        'emailTpl' => 'SentTpl',
+        'validate' => 'phone:required',
+        'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+        
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section advantages-->
+<section id="advantages">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Наши преимущества</h2>
+      </div>
+      <div class="col-md-10 col-sm-9 col-xs-12">
+        <div class="row">
+          <div class="col-sm-4 col-xs-12">
+            {$_modx->runSnippet('pdoResources',[
+             'parents' => 9,
+             'tpl' => '@FILE chunks/main/AdvantagesItem.html',
+             'where'=>'[" menuindex % 3 = 1 "]',
+             'sortby' => 'menuindex',
+             'sortdir' => 'ASC'])}
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            {$_modx->runSnippet('pdoResources',[
+            'parents' => 9,
+            'tpl' => '@FILE chunks/main/AdvantagesItem.html',
+            'where'=>'[" menuindex % 3 = 2 "]',
+            'sortby' => 'menuindex',
+            'sortdir' => 'ASC'])}
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            {$_modx->runSnippet('pdoResources',[
+            'parents' => 9,
+            'tpl' => '@FILE chunks/main/AdvantagesItem.html',
+            'where'=>'[" menuindex % 3 = 0 "]',
+            'sortby' => 'menuindex',
+            'sortdir' => 'ASC'])}
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-3 col-xs-12">
+        <div class="adv-summary push"><span>20</span>
+          <p>лет работы</p>
+        </div>
+        <div class="adv-summary"><span>142</span>
+          <p>тысячи слушателей</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section events-->
+<section id="events">
+  <div class="container">
+    <div id="events-title" class="row">
+      <div class="col-xs-12">
+        <h2>Акции и бонусы</h2>
+      </div>
+    </div>
+    <div id="events-banner" class="row">
+      <div class="col-sm-6 col-xs-12">
+        <div class="banner-text">
+          <p><span>Скидка 10% на все курсы предъявителю бонусной карты.</span></p>
+          <p>Владелец карты каждые 3 месяца получает деньги за каждое использование его карты.</p><a href="/assets/Files/akademtrans_bonusnayakarta.pdf" download="download" class="hidden-xs"><span>Как получить и правила использования</span></a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <div class="banner-img">
+          <div class="bonus-card"><img src="/assets/img/bonus_card.png" alt="bonus card"/><img src="/assets/img/bonus_card.png" alt="upcard" class="upcard"/><img src="/assets/img/bonuscard%20pattern.svg" alt="back" class="back"/></div><a href="/assets/Files/akademtrans_bonusnayakarta.pdf" download="download" class="hidden-sm hidden-md hidden-lg"><span>Как получить и правила использования</span></a>
+        </div>
+      </div>
+    </div>
+    <div id="events-list" class="row">
+      <div class="col-sm-6 col-xs-12">
+        {$_modx->runSnippet('pdoResources',[
+        'parents' => 11,
+        'tpl' => '@FILE chunks/main/EventItem.html',
+        'tplOdd' => '@INLINE',
+        'includeTVs' => 'eventColor,EventCost',
+        'sortby' => 'menuindex',
+        'sortdir' => 'ASC'])}
+        
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        {$_modx->runSnippet('pdoResources',[
+        'parents' => 11,
+        'tpl' => '@INLINE',
+        'tplOdd' => '@FILE chunks/main/EventItem.html',
+        'sortby' => 'menuindex',
+        'includeTVs' => 'eventColor,EventCost',
+        'sortdir' => 'ASC'])}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section courses-->
+<section id="courses">
+  <div class="container">
+    <div id="courses-title" class="row">
+      <div class="col-xs-12">
+        <h2>Проводим курсы, лекции и семинары<br/>по 6 направлениям</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="courses-wrapper">
+        <ul class="courses-type-menu">
+          <li class="active">
+            <h3>Курсы</h3>
+            <ul class="courses-list-menu">
+              {$_modx->runSnippet('pdoResources',[
+              'parents' => 2,
+              'depth' => '0',
+              'totalVar' => 'total',
+              'tpl' => '@FILE chunks/main/CourseList.html',
+              'tplFirst' => '@FILE chunks/main/CourseListActive.html',
+              'sortby' => 'menuindex',
+              'sortdir' => 'ASC'])}
+            </ul>
+          </li>
+          <li>
+            <h3>Лекции</h3>
+            <ul class="courses-list-menu">
+              <li class="active">
+                <div class="courses-list">
+                  {$_modx->runSnippet('pdoResources',[
+                   'parents' => 3,
+                   'idx' => 1,
+                   'tpl' => '@FILE chunks/main/CourseItem.html',
+                   'tplFirst' => '@FILE chunks/main/CourseItemActive.html',
+                   'includeTVs' => 'nearDate,MinPrice,Course_times,Course_count,Course_hours',
+                   'sortby' => 'menuindex',
+                   'sortdir' => 'ASC'])}
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h3>Услуги</h3>
+            <ul class="courses-list-menu">
+              <li class="active">
+                <div class="courses-list">
+                  {$_modx->runSnippet('pdoResources',[
+                  'parents' => 4,
+                  'idx' => 1,
+                  'tpl' => '@FILE chunks/main/CourseItem.html',
+                  'tplFirst' => '@FILE chunks/main/CourseItemActive.html',
+                  'includeTVs' => 'nearDate,MinPrice,Course_times,Course_count,Course_hours',
+                  'sortby' => 'menuindex',
+                  'sortdir' => 'ASC'])}
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section License-->
+<section id="license">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Лицензированный центр подготовки<br/>работников и специалистов</h2>
+        <p class="info">Мы получили государственную лицензию и аккредетацию на ведение курсов повышения квалификации сотрудников, руководящих работников и специалистов. После прохождения курсов выдаем сертификаты государственного образца.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="slider-license owl-carousel">
+        {$_modx->runSnippet('ms2GalleryResources',[
+        'parents' => 20,
+        'tpl' => '@FILE chunks/main/LicenseItem.html',
+        'sortby' => 'menuindex',
+        'includeThumbs' => '192x267',
+        'includeOriginal' => 1,
+        'sortdir' => 'ASC'])}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section reviews-->
+<section id="reviews">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Что о нас говорят наши выпускники</h2><a href="#send-review"><span>Оставить отзыв</span></a>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="slider-reviews owl-carousel">
+            {$_modx->runSnippet('!ecMessages',[
+            'tpl' => 'Review.ecMessages',
+            'threads' => 'resource-1,resource-25'])}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Map-->
+<section id="map-box">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Мы работаем в 17 городах</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 col-xs-12">
+        <div class="towns-wrapper">
+          <div class="select"><span>Минск</span></div>
+          <div class="dropdown">
+            <ul class="towns-list">
+              {$_modx->runSnippet('pdoResources',[
+              'parents' => 22,
+              'limit' => 30,
+              'includeTVs' => 'coords2',
+              'tpl' => '@FILE chunks/main/TownItem.html',
+              'tplFirst' => '@FILE chunks/main/TownItemActive.html',
+              'sortby' => 'menuindex',
+              'sortdir' => 'ASC'])}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-10 col-xs-12">
+        <div class="map-body">
+          <div id="map-here" class="maptop">
+            {$_modx->runSnippet('pdoResources',[
+            'parents' => 22,
+            'limit' => 30,
+            'includeTVs' => 'coords2,CityAddress,CityPhone',
+            'tpl' => '@FILE chunks/main/MapItem.html',
+            'tplFirst' => '@FILE chunks/main/MapItemActive.html',
+            'sortby' => 'menuindex',
+            'sortdir' => 'ASC'])}
+            
+          </div>
+        </div>
+        <div class="map-end"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section callback-->
+<section id="callback">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-7 col-xs-12">
+        <div class="callback-title">
+          <p class="hidden-xs">+ 375 29 652-63-66</p><a href="tel:+375296526366" class="visible-xs"><span>+ 375 29 652-63-66</span></a>
+          <p>Позвоните и узнайте информацию о комплектации групп</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-5 col-xs-12">
+        {$_modx->runSnippet('!AjaxForm',[
+        'snippet' => 'FormIt',
+        'form' => '@FILE chunks/main/footForm.html',
+        'hooks' => 'email',
+        'emailTo' => $_modx->config.MainEmail,
+        'emailCC' => 'messages@axora.by',
+        'emailFrom' => 'admin@s9831.h6.modhost.pro',
+        'emailSubject' => 'Заявка на запись на курсы',
+        'emailTpl' => 'SentTpl',
+        'validate' => 'phone:required',
+        'successMessage' => 'Ваше сообщение успешно отправлено!'])}
+        
+      </div>
+    </div>
+  </div>
+</section>{/block}

@@ -1,0 +1,13 @@
+ul.courses-list(id="course{$idx}")
+    li.title
+        a(href='/{$id | url}')
+            span {$pagetitle}
+    |{$_modx->runSnippet('pdoResources',[
+    |'parents' => $id,
+    |'depth' => 1,
+    |'tpl' => '@FILE chunks/cources/CoursesPageItem.html',
+    |'sortby' => 'menuindex',
+    |'includeTVs' => 'nearDate,MinPrice,Course_times,Course_count,Course_hours',
+    |'prepareTVs' => 1,
+    |'sortdir' => 'ASC'])}
+

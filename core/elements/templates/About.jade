@@ -1,0 +1,101 @@
+|{extends 'file:templates/Base.html'} {block 'content'}
+// Section info
+section#info
+    .container
+        .row
+            .col-sm-6
+                h2 Академтранс
+                p Образовательный центр, который уже 20 лет эффективно обучает водителей и специалистов автомобилистов. Мы даем знания необходимые для ежедневной работы и для повышения квалификации наших слушателей.
+                h2 Наша цель
+                p Мы даем слушателям актуальные знания, нужные в их ежедневной работе и помогаем развиваться и профессионально расти.
+            .col-sm-6
+                a.gallery(href='/assets/img/about/okompanii_page_img1.jpg')
+                    img(src='/assets/img/about/okompanii_page_img1.jpg', alt='')
+// Achievements
+section#achievements
+    .container
+        .row
+            .col-sm-3.col-xs-6
+                span 142
+                p.push тысячи слушателей за 20 лет
+            .col-sm-3.col-xs-6
+                span 7000
+                p слушателей в год проходят наши курсы
+            .col-sm-3.col-xs-6
+                span 116
+                p.push преподавателей в 16 центрах Беларуси
+            .col-sm-3.col-xs-6
+                span 96
+                p специализированных семинара в год
+// Director
+section#director
+    .container
+        .row
+            .col-sm-4.col-xs-8
+                img(src='/assets/img/about/boss.jpg', alt='Директор')
+            .col-sm-8.col-xs-12
+                .quote
+                    p «Академтранс» эффективно обучает водителей и специалистов автомобилистов уже двадцать лет. За это время мы получили большой опыт в подготовке специалистов — знаем на что обратить внимание слушателей, как подать материал просто. Наши выпускники отлично разбираются в законаx, нормативных актах и документации и после курсов работают еще эффективнее.
+                    p У нас работают опытные преподаватели — специалисты в таможенном деле перевозках и юриспруденции. Преподаватели следят за изменениями в законодательстве, разбираются в нюансах и умеют все это рассказать нашим слушателем так, чтобы получить максимальный эффект.
+                    p Мы экономим время наших слушателей и стараемся оптимизировать учебный процесс так, чтобы ученики за минимальный срок получил и усвоил необходимые знания.
+                .signature
+                    h4 Андрей Мечеславович Бурак
+                    p директор
+// Photos
+section#photos
+    .container
+        .row
+            .col-sm-6.col-sm-push-6.col-xs-12.block2
+                h2
+                    | Занятия в оборудованных
+                    br
+                    | классах
+                p Наши аудитории хорошо оборудованы — наглядные пособия, проекторы, компьютеры, ксероксы и сканеры — у учеников есть все нужные материалы, слушатели могут сделать копии документов в учебном центре.
+                a.gallery.hidden-xs(href='/assets/img/about/okompanii_page_img3.jpg')
+                    img(src='/assets/img/about/okompanii_page_img3.jpg', alt='')
+                a.gallery.visible-xs(href='/assets/img/about/okompanii_page_img2.jpg')
+                    img(src='/assets/img/about/okompanii_page_img2.jpg', alt='')
+            .col-sm-6.col-sm-pull-6.col-xs-12.block1
+                a.gallery.hidden-xs(href='/assets/img/about/okompanii_page_img2.jpg')
+                    img(src='/assets/img/about/okompanii_page_img2.jpg', alt='')
+                p Центры расположены в современных офисных зданиях — аудитории светлые и теплые, заниматься всегда комфортно.
+                a.gallery.visible-xs(href='/assets/img/about/okompanii_page_img3.jpg')
+                    img(src='/assets/img/about/okompanii_page_img3.jpg', alt='')
+        .row
+            .col-sm-7.block3
+                a.gallery(href='/assets/img/about/okompanii_page_img4.jpg')
+                    img(src='/assets/img/about/okompanii_page_img4.jpg', alt='')
+            .col-sm-5.block4
+                .col-sm-12.col-xs-6
+                    a.gallery(href='/assets/img/about/okompanii_page_img5.jpg')
+                        img(src='/assets/img/about/okompanii_page_img5.jpg', alt='')
+                .col-sm-12.col-xs-6
+                    a.gallery(href='/assets/img/about/okompanii_page_img6.jpg')
+                        img(src='/assets/img/about/okompanii_page_img6.jpg', alt='')
+        .row
+            .col-sm-4.block5
+                a.gallery(href='/assets/img/about/okompanii_page_img7.jpg')
+                    img(src='/assets/img/about/okompanii_page_img7.jpg', alt='')
+                p.p3 В перерывах между занятиями вы можете отдохнуть и обменяться опытом с коллегами, а также почитать литературу и ознакомиться с нашим пособием «Пассажирские перевозки»
+            .col-sm-4.block6
+                a.gallery(href='/assets/img/about/okompanii_page_img8.jpg')
+                    img(src='/assets/img/about/okompanii_page_img8.jpg', alt='')
+            .col-sm-4.block7
+                a.gallery(href='/assets/img/about/okompanii_page_img9.jpg')
+                    img(src='/assets/img/about/okompanii_page_img9.jpg', alt='')
+// reviews
+section#reviews
+    .container
+        .row
+            .col-xs-12
+                h2 Отзывы наших слушателей
+                a(href='#send-review')
+                    span Оставить отзыв
+            .row
+                .col-xs-12
+                    .slider-reviews.owl-carousel.
+                        {$_modx->runSnippet('!ecMessages',[
+                        'tpl' => 'Review.ecMessages',
+                        'threads' => 'resource-1,resource-25'])}
+|{/block}
+
